@@ -198,7 +198,7 @@
             this.btnsave.TabIndex = 20;
             this.btnsave.Text = "Save";
             this.btnsave.UseVisualStyleBackColor = true;
-            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
+           // this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // btndelete
             // 

@@ -409,7 +409,7 @@ namespace DoAn_2.MenuTab
             }
         }
 
-        private void btnsave_Click(object sender, EventArgs e)
+     /*   private void btnsave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtid.Text))
             {
@@ -440,7 +440,7 @@ namespace DoAn_2.MenuTab
                     connect.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {
-                        MessageBox.Show("Đã lựu");
+                        MessageBox.Show("Đã lưu");
                         gridviewsp();
                         txtid.ReadOnly = true;
                     }
@@ -459,7 +459,7 @@ namespace DoAn_2.MenuTab
             }
             }
         }
-
+     */
         private void btndelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtid.Text))

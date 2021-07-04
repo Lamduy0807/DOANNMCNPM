@@ -290,6 +290,7 @@
     <Content Include="IMG\Keotraicay4mua.jpg" />
     <Content Include="IMG\pepsi-lon.png" />
     <Content Include="IMG\xucxich-bit1.jpg" />
+    <Content Include="Resources\loginbg.png" />
     <None Include="Resources\loadinglogo.png" />
     <None Include="Resources\default.jpg" />
   </ItemGroup>

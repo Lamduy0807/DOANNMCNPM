@@ -518,6 +518,7 @@
             this.Controls.Add(this.panelTitlebar);
             this.Controls.Add(this.panelshadow);
             this.Controls.Add(this.PanelMenu);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

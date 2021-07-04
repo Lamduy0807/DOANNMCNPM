@@ -80,6 +80,8 @@
             this.PanelMenu.Controls.Add(this.PanelLogo);
             this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.PanelMenu.MaximumSize = new System.Drawing.Size(170, 600);
+            this.PanelMenu.MinimumSize = new System.Drawing.Size(170, 600);
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(170, 600);
             this.PanelMenu.TabIndex = 0;
@@ -98,6 +100,8 @@
             this.btnsetting.IconSize = 35;
             this.btnsetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnsetting.Location = new System.Drawing.Point(0, 500);
+            this.btnsetting.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btnsetting.MinimumSize = new System.Drawing.Size(170, 50);
             this.btnsetting.Name = "btnsetting";
             this.btnsetting.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnsetting.Rotation = 0D;
@@ -182,6 +186,8 @@
             this.iconButtonSP.IconSize = 35;
             this.iconButtonSP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButtonSP.Location = new System.Drawing.Point(0, 0);
+            this.iconButtonSP.MaximumSize = new System.Drawing.Size(170, 50);
+            this.iconButtonSP.MinimumSize = new System.Drawing.Size(170, 50);
             this.iconButtonSP.Name = "iconButtonSP";
             this.iconButtonSP.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButtonSP.Rotation = 0D;
@@ -205,6 +211,8 @@
             this.btndashboard.IconSize = 35;
             this.btndashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btndashboard.Location = new System.Drawing.Point(0, 300);
+            this.btndashboard.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btndashboard.MinimumSize = new System.Drawing.Size(170, 50);
             this.btndashboard.Name = "btndashboard";
             this.btndashboard.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btndashboard.Rotation = 0D;
@@ -229,6 +237,8 @@
             this.btnlogout.IconSize = 35;
             this.btnlogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnlogout.Location = new System.Drawing.Point(0, 550);
+            this.btnlogout.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btnlogout.MinimumSize = new System.Drawing.Size(170, 50);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnlogout.Rotation = 0D;
@@ -252,6 +262,8 @@
             this.btntonkho.IconSize = 35;
             this.btntonkho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btntonkho.Location = new System.Drawing.Point(0, 250);
+            this.btntonkho.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btntonkho.MinimumSize = new System.Drawing.Size(170, 50);
             this.btntonkho.Name = "btntonkho";
             this.btntonkho.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btntonkho.Rotation = 0D;
@@ -276,6 +288,8 @@
             this.btnorders.IconSize = 35;
             this.btnorders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnorders.Location = new System.Drawing.Point(0, 150);
+            this.btnorders.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btnorders.MinimumSize = new System.Drawing.Size(170, 50);
             this.btnorders.Name = "btnorders";
             this.btnorders.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnorders.Rotation = 0D;
@@ -300,6 +314,8 @@
             this.btnhome.IconSize = 35;
             this.btnhome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnhome.Location = new System.Drawing.Point(0, 100);
+            this.btnhome.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btnhome.MinimumSize = new System.Drawing.Size(170, 50);
             this.btnhome.Name = "btnhome";
             this.btnhome.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnhome.Rotation = 0D;
@@ -323,6 +339,8 @@
             this.btnnhapkho.IconSize = 35;
             this.btnnhapkho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnnhapkho.Location = new System.Drawing.Point(0, 200);
+            this.btnnhapkho.MaximumSize = new System.Drawing.Size(170, 50);
+            this.btnnhapkho.MinimumSize = new System.Drawing.Size(170, 50);
             this.btnnhapkho.Name = "btnnhapkho";
             this.btnnhapkho.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnnhapkho.Rotation = 0D;
@@ -339,6 +357,8 @@
             this.PanelLogo.Controls.Add(this.picLogo);
             this.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelLogo.Location = new System.Drawing.Point(0, 0);
+            this.PanelLogo.MaximumSize = new System.Drawing.Size(170, 100);
+            this.PanelLogo.MinimumSize = new System.Drawing.Size(170, 100);
             this.PanelLogo.Name = "PanelLogo";
             this.PanelLogo.Size = new System.Drawing.Size(170, 100);
             this.PanelLogo.TabIndex = 0;
@@ -347,8 +367,10 @@
             // 
             this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
             this.picLogo.Location = new System.Drawing.Point(32, 3);
+            this.picLogo.MaximumSize = new System.Drawing.Size(101, 91);
+            this.picLogo.MinimumSize = new System.Drawing.Size(101, 91);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(105, 97);
+            this.picLogo.Size = new System.Drawing.Size(101, 91);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
@@ -365,6 +387,8 @@
             this.panelTitlebar.Controls.Add(this.iconmenusmall);
             this.panelTitlebar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitlebar.Location = new System.Drawing.Point(170, 0);
+            this.panelTitlebar.MaximumSize = new System.Drawing.Size(930, 70);
+            this.panelTitlebar.MinimumSize = new System.Drawing.Size(930, 70);
             this.panelTitlebar.Name = "panelTitlebar";
             this.panelTitlebar.Size = new System.Drawing.Size(930, 70);
             this.panelTitlebar.TabIndex = 1;
@@ -398,10 +422,13 @@
             this.iconMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconMinimize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.iconMinimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.iconMinimize.IconColor = System.Drawing.Color.Gainsboro;
             this.iconMinimize.IconSize = 25;
-            this.iconMinimize.Location = new System.Drawing.Point(874, 0);
+            this.iconMinimize.Location = new System.Drawing.Point(865, 0);
+            this.iconMinimize.MaximumSize = new System.Drawing.Size(30, 30);
+            this.iconMinimize.MinimumSize = new System.Drawing.Size(30, 30);
             this.iconMinimize.Name = "iconMinimize";
             this.iconMinimize.Rotation = 0D;
             this.iconMinimize.Size = new System.Drawing.Size(30, 30);
@@ -414,10 +441,13 @@
             this.iconExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconExit.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.iconExit.IconChar = FontAwesome.Sharp.IconChar.Times;
             this.iconExit.IconColor = System.Drawing.Color.Gainsboro;
             this.iconExit.IconSize = 25;
-            this.iconExit.Location = new System.Drawing.Point(900, 0);
+            this.iconExit.Location = new System.Drawing.Point(900, 6);
+            this.iconExit.MaximumSize = new System.Drawing.Size(30, 30);
+            this.iconExit.MinimumSize = new System.Drawing.Size(30, 30);
             this.iconExit.Name = "iconExit";
             this.iconExit.Rotation = 0D;
             this.iconExit.Size = new System.Drawing.Size(30, 30);
@@ -520,6 +550,8 @@
             this.Controls.Add(this.PanelMenu);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1100, 600);
+            this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "MainControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainControl";

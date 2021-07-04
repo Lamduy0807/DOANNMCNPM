@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TonKho));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtTensp = new System.Windows.Forms.TextBox();
@@ -73,24 +74,24 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
-            // txtid
+            // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(114, 12);
-            this.txtId.Name = "txtid";
+            this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(180, 20);
             this.txtId.TabIndex = 1;
             // 
-            // txttensp
+            // txtTensp
             // 
             this.txtTensp.Location = new System.Drawing.Point(114, 39);
-            this.txtTensp.Name = "txttensp";
+            this.txtTensp.Name = "txtTensp";
             this.txtTensp.Size = new System.Drawing.Size(180, 20);
             this.txtTensp.TabIndex = 2;
             // 
-            // txtsl
+            // txtSl
             // 
             this.txtSl.Location = new System.Drawing.Point(114, 67);
-            this.txtSl.Name = "txtsl";
+            this.txtSl.Name = "txtSl";
             this.txtSl.Size = new System.Drawing.Size(180, 20);
             this.txtSl.TabIndex = 3;
             // 
@@ -154,17 +155,17 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Giá nhập";
             // 
-            // txtgiaban
+            // txtGiaban
             // 
             this.txtGiaban.Location = new System.Drawing.Point(114, 120);
-            this.txtGiaban.Name = "txtgiaban";
+            this.txtGiaban.Name = "txtGiaban";
             this.txtGiaban.Size = new System.Drawing.Size(180, 20);
             this.txtGiaban.TabIndex = 12;
             // 
-            // txtgianhap
+            // txtGianhap
             // 
             this.txtGianhap.Location = new System.Drawing.Point(114, 93);
-            this.txtGianhap.Name = "txtgianhap";
+            this.txtGianhap.Name = "txtGianhap";
             this.txtGianhap.Size = new System.Drawing.Size(180, 20);
             this.txtGianhap.TabIndex = 11;
             // 
@@ -178,20 +179,20 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Đơn vị";
             // 
-            // btnsave
+            // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(17, 243);
-            this.btnSave.Name = "btnsave";
+            this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(60, 40);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnsave_Click);
             // 
-            // btndelete
+            // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(124, 243);
-            this.btnDelete.Name = "btndelete";
+            this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(57, 40);
             this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Delete";
@@ -238,16 +239,16 @@
             this.btnButtonChooseIMG.UseVisualStyleBackColor = true;
             this.btnButtonChooseIMG.Click += new System.EventHandler(this.btnButtonChooseIMG_Click);
             // 
-            // txtsearch
+            // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(309, 58);
-            this.txtSearch.Name = "txtsearch";
+            this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(196, 20);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
-            // comboloai
+            // comboLoai
             // 
             this.comboLoai.FormattingEnabled = true;
             this.comboLoai.Items.AddRange(new object[] {
@@ -257,12 +258,12 @@
             "Nước suối",
             "Xúc xích"});
             this.comboLoai.Location = new System.Drawing.Point(114, 147);
-            this.comboLoai.Name = "comboloai";
+            this.comboLoai.Name = "comboLoai";
             this.comboLoai.Size = new System.Drawing.Size(180, 21);
             this.comboLoai.TabIndex = 27;
             this.comboLoai.SelectedIndexChanged += new System.EventHandler(this.comboloai_SelectedIndexChanged);
             // 
-            // combodonvi
+            // comboDonvi
             // 
             this.comboDonvi.FormattingEnabled = true;
             this.comboDonvi.Items.AddRange(new object[] {
@@ -272,14 +273,14 @@
             "Hộp",
             "Thùng"});
             this.comboDonvi.Location = new System.Drawing.Point(114, 178);
-            this.comboDonvi.Name = "combodonvi";
+            this.comboDonvi.Name = "comboDonvi";
             this.comboDonvi.Size = new System.Drawing.Size(180, 21);
             this.comboDonvi.TabIndex = 28;
             // 
-            // btnclear
+            // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(237, 243);
-            this.btnClear.Name = "btnclear";
+            this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(57, 40);
             this.btnClear.TabIndex = 29;
             this.btnClear.Text = "Clear";
@@ -330,10 +331,12 @@
             this.btnExportExcel.UseVisualStyleBackColor = true;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
-            // tonkho
+            // TonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(884, 411);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.label8);
@@ -361,7 +364,8 @@
             this.Controls.Add(this.txtTensp);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "tonkho";
+            this.DoubleBuffered = true;
+            this.Name = "TonKho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tồn kho";
             this.Load += new System.EventHandler(this.sanpham_Load);

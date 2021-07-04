@@ -129,7 +129,7 @@
             this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnlogin.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogin.Location = new System.Drawing.Point(114, 381);
+            this.btnlogin.Location = new System.Drawing.Point(115, 380);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(150, 41);
             this.btnlogin.TabIndex = 3;
@@ -143,7 +143,7 @@
             this.lbexit.BackColor = System.Drawing.Color.Transparent;
             this.lbexit.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbexit.ForeColor = System.Drawing.Color.White;
-            this.lbexit.Location = new System.Drawing.Point(349, 20);
+            this.lbexit.Location = new System.Drawing.Point(340, 17);
             this.lbexit.Name = "lbexit";
             this.lbexit.Size = new System.Drawing.Size(19, 22);
             this.lbexit.TabIndex = 8;
@@ -156,7 +156,7 @@
             this.lbmini.BackColor = System.Drawing.Color.Transparent;
             this.lbmini.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbmini.ForeColor = System.Drawing.Color.White;
-            this.lbmini.Location = new System.Drawing.Point(319, 16);
+            this.lbmini.Location = new System.Drawing.Point(310, 12);
             this.lbmini.Name = "lbmini";
             this.lbmini.Size = new System.Drawing.Size(24, 32);
             this.lbmini.TabIndex = 9;
@@ -171,7 +171,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(389, 497);
+            this.ClientSize = new System.Drawing.Size(384, 497);
             this.Controls.Add(this.lbmini);
             this.Controls.Add(this.lbexit);
             this.Controls.Add(this.btnlogin);

@@ -24,11 +24,11 @@ namespace DoAn_2.MenuTab
         public static string hDDonGia = "";
         public static string hDSL = "";
         public static string hDLoai = "";
-      //  public static string HDthanhtoan = "";
+        //  public static string HDthanhtoan = "";
         public static string hDDonVi = "";
         public static string sDT = "";
         public static string tenKH = "";
-        
+
         int checkSLSP;//kiem tra so luong san pham nao do trong ton kho
         int indexRow;
         public BanHang()
@@ -55,10 +55,9 @@ namespace DoAn_2.MenuTab
             txtdongiasp.Clear();
             txtgiamphantramsp.Clear();
             txttiensp.Clear();
-            comboBoxdonvisp.SelectedItem = null;
-            comboBoxdonvisp.Text = null;
-            
-            comboBoxloaisp.Text = null;
+            txtDonViSP.Text = null;
+
+            txtLoaiSP.Text = null;
         }
         double sum;
         public void HuyHD()
@@ -71,11 +70,10 @@ namespace DoAn_2.MenuTab
             txtdongiasp.Clear();
             txtgiamphantramsp.Clear();
             txttiensp.Clear();
-            comboBoxdonvisp.SelectedItem = null;
-            comboBoxdonvisp.Text = null;
+            txtDonViSP.Text = null;
             txttongcongtiensp.Clear();
             txtgiamtientong.Clear();
-            txtgiamphantramtong.Clear(); 
+            txtgiamphantramtong.Clear();
             txtthanhtoan.Clear();
             txtcongtientong.Clear();
             txtcongphantramtong.Clear();
@@ -85,27 +83,27 @@ namespace DoAn_2.MenuTab
         private void btnthem_Click(object sender, EventArgs e)
         {
             bool found = false;
-            if(dataGridView1.Rows.Count>0)
+            if (dataGridView1.Rows.Count > 0)
             {
-                foreach(DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if(Convert.ToString(row.Cells[0].Value) == txtmasp.Text)
+                    if (Convert.ToString(row.Cells[0].Value) == txtmasp.Text)
                     {
                         //neu them san pham giong nhau se cộng dồn số lượng và tiền vào ô
-                        row.Cells[2].Value = ( int.Parse(txtsoluongsp.Text) + Convert.ToInt16(row.Cells[2].Value.ToString()));
+                        row.Cells[2].Value = (int.Parse(txtsoluongsp.Text) + Convert.ToInt16(row.Cells[2].Value.ToString()));
                         row.Cells[4].Value = (double.Parse(txttiensp.Text) + Convert.ToDouble(row.Cells[4].Value.ToString()));
                         found = true;
                         /////////////////////
                     }
                 }
-                if(!found)
+                if (!found)
                 {
-                    dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, comboBoxdonvisp.Text, comboBoxloaisp.Text, txtgiamphantramsp.Text);
+                    dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text);
                 }
             }
             else
             {
-                dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, comboBoxdonvisp.Text, comboBoxloaisp.Text, txtgiamphantramsp.Text);
+                dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text);
             }
             /////////////////////
             //int n = dataGridView1.Rows.Add();
@@ -114,11 +112,11 @@ namespace DoAn_2.MenuTab
             //dataGridView1.Rows[n].Cells[2].Value = txtsoluongsp.Text;
             //dataGridView1.Rows[n].Cells[3].Value = txtdongiasp.Text;
             //dataGridView1.Rows[n].Cells[4].Value = txttiensp.Text;
-            //dataGridView1.Rows[n].Cells[5].Value = comboBoxdonvisp.Text;
+            //dataGridView1.Rows[n].Cells[5].Value = txtDonViSP.Text;
             ////    dataGridView1.Rows[n].Cells[6].Value = txtgiamphantramsp.Text;
-           
+
             //------------ tinh tong tien sp trong datagridview-------------///
-             sum = 0;
+            sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
@@ -179,30 +177,30 @@ namespace DoAn_2.MenuTab
             newDataRow.Cells[2].Value = txtsoluongsp.Text;
             newDataRow.Cells[3].Value = txtdongiasp.Text;
             newDataRow.Cells[4].Value = txttiensp.Text;
-            newDataRow.Cells[5].Value = comboBoxdonvisp.Text;
-            newDataRow.Cells[6].Value = comboBoxloaisp.Text;
+            newDataRow.Cells[5].Value = txtDonViSP.Text;
+            newDataRow.Cells[6].Value = txtLoaiSP.Text;
 
             //
 
             // tru slsp
-           using (var cMDEdit2 = new SqlCommand("update tonkho set soluongsp=soluongsp - '" + txtsoluongsp.Text + "' where masp='" + txtmasp.Text + "' "))
-           {
-               cMDEdit2.Connection = connect;
-               connect.Open();
-               if (cMDEdit2.ExecuteNonQuery() > 0)
-               {
-                   MessageBox.Show("Đã update");
-                   connect.Close();
-               }
-               else
-               {
-                   MessageBox.Show("Không thành công!");
-                   connect.Close();
-               }
-               connect.Close();
-           }
+            using (var cMDEdit2 = new SqlCommand("update tonkho set soluongsp=soluongsp - '" + txtsoluongsp.Text + "' where masp='" + txtmasp.Text + "' "))
+            {
+                cMDEdit2.Connection = connect;
+                connect.Open();
+                if (cMDEdit2.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Đã update");
+                    connect.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Không thành công!");
+                    connect.Close();
+                }
+                connect.Close();
+            }
 
-           ClearSP();
+            ClearSP();
             sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
@@ -215,21 +213,21 @@ namespace DoAn_2.MenuTab
         int sLSPEdit;
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-            
+
             if (dataGridView1.CurrentRow.Index != -1)
             {
                 ClearSP();
-               
+
 
                 txtmasp.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 txttensp.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 txtsoluongsp.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 txtdongiasp.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-               
+
                 txttiensp.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
-                comboBoxdonvisp.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                comboBoxloaisp.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                txtDonViSP.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                txtLoaiSP.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
                 txtgiamphantramsp.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
                 maSPEdit = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 sLSPEdit = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
@@ -305,7 +303,7 @@ namespace DoAn_2.MenuTab
                 txtcongtientong.Enabled = true;
                 txtcongphantramtong.Enabled = true;
             }
-            else if(txtgiamtientong.Text.StartsWith(","))
+            else if (txtgiamtientong.Text.StartsWith(","))
             {
                 MessageBox.Show("loi .");
             }
@@ -326,7 +324,7 @@ namespace DoAn_2.MenuTab
                     tCTienSauKhiTru = tongCongTienSP - truTienTongCong;
                     txtthanhtoan.Text = tCTienSauKhiTru.ToString("###,###");
                     //pass form TT
-                  //  HDthanhtoan = txtthanhtoan.Text;
+                    //  HDthanhtoan = txtthanhtoan.Text;
                 }
             }
         }
@@ -380,7 +378,7 @@ namespace DoAn_2.MenuTab
 
         private void txtgiamtientong_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar!=',')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
             {
                 e.Handled = true;
             }
@@ -448,7 +446,7 @@ namespace DoAn_2.MenuTab
             }
             else
             {
-             //   txtcongtientong.Enabled = false;
+                //   txtcongtientong.Enabled = false;
                 double tongCongTienSP;
                 double congPhanTramTong;
                 double tCTienSauKhiCongPT;
@@ -507,7 +505,7 @@ namespace DoAn_2.MenuTab
             foreach (DataGridViewRow item in dataGridView1.Rows)
             {
                 listBox1a.Items.Add(item.Cells[1].Value.ToString() + '/' + item.Cells[2].Value.ToString() + '/' + item.Cells[3].Value.ToString());
-              //--  listBox1a.Items.Add(item.Cells[1].Value.ToString().PadRight(30) + item.Cells[4].Value.ToString());
+                //--  listBox1a.Items.Add(item.Cells[1].Value.ToString().PadRight(30) + item.Cells[4].Value.ToString());
             }
             //------------------------------------------------// datagridview masp,tensp,slsp to list
             //pass datagridview to listbox: masp,tensp,sl
@@ -532,7 +530,7 @@ namespace DoAn_2.MenuTab
                 colDVSP = string.Join(",", listBox7.Items.Cast<String>());
                 colDonGiaSP = string.Join(",", listBox8.Items.Cast<String>());
             }
-            
+
             hDMaSP = colMaSP;
             hDTenSP = colTenSP;
             hDSL = colSLSP;
@@ -548,10 +546,10 @@ namespace DoAn_2.MenuTab
             form2.Show();
             //------------------------------------------------//
 
-           
-            
-          //  BanHangTT frmTT = new BanHangTT();
-          //  frmTT.Show();  
+
+
+            //  BanHangTT frmTT = new BanHangTT();
+            //  frmTT.Show();  
         }
 
         private void txtmakh_TextChanged(object sender, EventArgs e)
@@ -597,27 +595,17 @@ namespace DoAn_2.MenuTab
                 while (dR.Read())
                 {
                     autotensp.Add(dR.GetString(0));
-                    
+
                 }
                 txttensp.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txttensp.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txttensp.AutoCompleteCustomSource = autotensp;
                 connect.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttensp_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -625,17 +613,17 @@ namespace DoAn_2.MenuTab
         {
             string loaiSP1;
             double giamGiaTextbox;
-            
-            if(e.KeyCode==Keys.Enter)
+
+            if (e.KeyCode == Keys.Enter)
             {
                 connect.Open();
-                string sqlsp = "select * from tonkho where (tensp= N'"+ txttensp.Text+"') ";
+                string sqlsp = "select * from tonkho where (tensp= N'" + txttensp.Text + "') ";
                 SqlCommand cmd2 = new SqlCommand(sqlsp, connect);
                 SqlDataReader dr2 = cmd2.ExecuteReader();
                 if (dr2.Read())
                 {
                     checkSLSP = Convert.ToInt32(dr2["soluongsp"]);
-                    if(checkSLSP<1)
+                    if (checkSLSP < 1)
                     {
                         MessageBox.Show("het hang");
                     }
@@ -645,8 +633,8 @@ namespace DoAn_2.MenuTab
                         txtdongiasp.Text = (dr2["giabansp"].ToString());
                         txtsoluongsp.Text = "1";
                         txtgiamphantramsp.Text = (dr2["giamgia"].ToString());
-                        comboBoxdonvisp.Text = (dr2["donvisp"].ToString());
-                        comboBoxloaisp.Text = (dr2["loaisp"].ToString());
+                        txtDonViSP.Text = (dr2["donvisp"].ToString());
+                        txtLoaiSP.Text = (dr2["loaisp"].ToString());
                         //thanhtiensp = soluong * don gia
                         double slsp;
                         double dongiasp;
@@ -665,13 +653,13 @@ namespace DoAn_2.MenuTab
                         txttiensp.Text = thanhtiensp2.ToString("###,###");
 
                         //luu tru cho from  TT
-                        loaiSP1 = comboBoxloaisp.Text;//
-                        //  HDmasp = txtmasp.Text;
-                        //  HDdongia = txtdongiasp.Text;
-                        //  HDsl = txtsoluongsp.Text;
-                        //  HDdonvi = comboBoxdonvisp.Text;
-                        //  HDtensp = txttensp.Text;
-                         //   HDloai = loaisp1;
+                        loaiSP1 = txtLoaiSP.Text;//
+                                                      //  HDmasp = txtmasp.Text;
+                                                      //  HDdongia = txtdongiasp.Text;
+                                                      //  HDsl = txtsoluongsp.Text;
+                                                      //  HDdonvi = txtDonViSP.Text;
+                                                      //  HDtensp = txttensp.Text;
+                                                      //   HDloai = loaisp1;
                     }
 
                 }
@@ -683,7 +671,7 @@ namespace DoAn_2.MenuTab
         {
             if (string.IsNullOrWhiteSpace(txtsoluongsp.Text))
             {
-                
+
             }
             else if (string.IsNullOrWhiteSpace(txtdongiasp.Text))
             {
@@ -696,7 +684,7 @@ namespace DoAn_2.MenuTab
             else
             {
                 int slspHienTai = Convert.ToInt32(txtsoluongsp.Text);
-                if(slspHienTai>checkSLSP)
+                if (slspHienTai > checkSLSP)
                 {
                     txtsoluongsp.Text = checkSLSP.ToString();
                 }
@@ -720,10 +708,10 @@ namespace DoAn_2.MenuTab
 
                     txttiensp.Text = thanhTienSP2.ToString("###,###");
                 }
-                
+
 
             }
- 
+
         }
 
         private void btnhuyHD_Click(object sender, EventArgs e)
@@ -737,13 +725,7 @@ namespace DoAn_2.MenuTab
         {
 
         }
-     //   string maspdata1;
-
-        private void btnexit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        //   string maspdata1;
         private void txtmasp_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -760,8 +742,8 @@ namespace DoAn_2.MenuTab
                     txtdongiasp.Text = (dr2["giabansp"].ToString());
                     txtsoluongsp.Text = "1";
                     txtgiamphantramsp.Text = (dr2["giamgia"].ToString());
-                    comboBoxdonvisp.Text = (dr2["donvisp"].ToString());
-                    comboBoxloaisp.Text = (dr2["loaisp"].ToString());
+                    txtDonViSP.Text = (dr2["donvisp"].ToString());
+                    txtLoaiSP.Text = (dr2["loaisp"].ToString());
                     //thanhtiensp = soluong * don gia
                     double sLSP;
                     double donGiaSP;
@@ -785,7 +767,7 @@ namespace DoAn_2.MenuTab
 
         private void txtsoluongsp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -793,7 +775,7 @@ namespace DoAn_2.MenuTab
 
         private void txtdongiasp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -807,9 +789,6 @@ namespace DoAn_2.MenuTab
             }
         }
 
-        private void btnscansp_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconDBHoaDon = new FontAwesome.Sharp.IconPictureBox();
             this.lbHDtoday = new System.Windows.Forms.Label();
@@ -244,32 +245,47 @@
             // 
             // btnChartMoney
             // 
-            this.btnChartMoney.Location = new System.Drawing.Point(717, 261);
+            this.btnChartMoney.BackColor = System.Drawing.Color.Transparent;
+            this.btnChartMoney.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChartMoney.BackgroundImage")));
+            this.btnChartMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChartMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChartMoney.ForeColor = System.Drawing.Color.White;
+            this.btnChartMoney.Location = new System.Drawing.Point(718, 261);
             this.btnChartMoney.Name = "btnChartMoney";
-            this.btnChartMoney.Size = new System.Drawing.Size(184, 43);
+            this.btnChartMoney.Size = new System.Drawing.Size(184, 61);
             this.btnChartMoney.TabIndex = 7;
             this.btnChartMoney.Text = "Thống kê theo tổng tiền";
-            this.btnChartMoney.UseVisualStyleBackColor = true;
+            this.btnChartMoney.UseVisualStyleBackColor = false;
             this.btnChartMoney.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnChartSL
             // 
-            this.btnChartSL.Location = new System.Drawing.Point(717, 310);
+            this.btnChartSL.BackColor = System.Drawing.Color.Transparent;
+            this.btnChartSL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChartSL.BackgroundImage")));
+            this.btnChartSL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChartSL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChartSL.ForeColor = System.Drawing.Color.White;
+            this.btnChartSL.Location = new System.Drawing.Point(718, 356);
             this.btnChartSL.Name = "btnChartSL";
-            this.btnChartSL.Size = new System.Drawing.Size(184, 43);
+            this.btnChartSL.Size = new System.Drawing.Size(184, 61);
             this.btnChartSL.TabIndex = 9;
             this.btnChartSL.Text = "Thống kê theo số lượng";
-            this.btnChartSL.UseVisualStyleBackColor = true;
+            this.btnChartSL.UseVisualStyleBackColor = false;
             this.btnChartSL.Click += new System.EventHandler(this.btnChartSL_Click);
             // 
             // btnSanPhamSapHet
             // 
-            this.btnSanPhamSapHet.Location = new System.Drawing.Point(717, 359);
+            this.btnSanPhamSapHet.BackColor = System.Drawing.Color.Transparent;
+            this.btnSanPhamSapHet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSanPhamSapHet.BackgroundImage")));
+            this.btnSanPhamSapHet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSanPhamSapHet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSanPhamSapHet.ForeColor = System.Drawing.Color.White;
+            this.btnSanPhamSapHet.Location = new System.Drawing.Point(718, 447);
             this.btnSanPhamSapHet.Name = "btnSanPhamSapHet";
-            this.btnSanPhamSapHet.Size = new System.Drawing.Size(184, 43);
+            this.btnSanPhamSapHet.Size = new System.Drawing.Size(184, 61);
             this.btnSanPhamSapHet.TabIndex = 10;
             this.btnSanPhamSapHet.Text = "Sản phẩm sắp hết hàng";
-            this.btnSanPhamSapHet.UseVisualStyleBackColor = true;
+            this.btnSanPhamSapHet.UseVisualStyleBackColor = false;
             this.btnSanPhamSapHet.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel4
@@ -394,6 +410,7 @@
             // 
             // PanelChart
             // 
+            this.PanelChart.BackColor = System.Drawing.Color.Transparent;
             this.PanelChart.Location = new System.Drawing.Point(13, 261);
             this.PanelChart.Name = "PanelChart";
             this.PanelChart.Size = new System.Drawing.Size(698, 247);
@@ -404,6 +421,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(914, 511);
             this.Controls.Add(this.PanelChart);
             this.Controls.Add(this.panel6);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonHang));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelSearch = new System.Windows.Forms.Label();
@@ -41,17 +42,19 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 81);
+            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+            this.dataGridView1.Location = new System.Drawing.Point(41, 118);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(835, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(835, 350);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(24, 54);
+            this.textBoxSearch.Location = new System.Drawing.Point(41, 71);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(260, 20);
             this.textBoxSearch.TabIndex = 1;
@@ -60,8 +63,10 @@
             // labelSearch
             // 
             this.labelSearch.AutoSize = true;
+            this.labelSearch.BackColor = System.Drawing.Color.Transparent;
             this.labelSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSearch.Location = new System.Drawing.Point(21, 19);
+            this.labelSearch.ForeColor = System.Drawing.Color.White;
+            this.labelSearch.Location = new System.Drawing.Point(38, 36);
             this.labelSearch.Name = "labelSearch";
             this.labelSearch.Size = new System.Drawing.Size(295, 32);
             this.labelSearch.TabIndex = 2;
@@ -70,7 +75,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(659, 51);
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.Transparent;
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dateTimePicker1.Location = new System.Drawing.Point(676, 68);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 4;
@@ -78,47 +85,58 @@
             // 
             // ButtonReloadTable
             // 
+            this.ButtonReloadTable.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonReloadTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonReloadTable.BackgroundImage")));
+            this.ButtonReloadTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ButtonReloadTable.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ButtonReloadTable.ForeColor = System.Drawing.Color.White;
             this.ButtonReloadTable.IconChar = FontAwesome.Sharp.IconChar.None;
             this.ButtonReloadTable.IconColor = System.Drawing.Color.Black;
             this.ButtonReloadTable.IconSize = 16;
-            this.ButtonReloadTable.Location = new System.Drawing.Point(301, 51);
+            this.ButtonReloadTable.Location = new System.Drawing.Point(318, 68);
             this.ButtonReloadTable.Name = "ButtonReloadTable";
             this.ButtonReloadTable.Rotation = 0D;
             this.ButtonReloadTable.Size = new System.Drawing.Size(75, 23);
             this.ButtonReloadTable.TabIndex = 5;
             this.ButtonReloadTable.Text = "Reload";
-            this.ButtonReloadTable.UseVisualStyleBackColor = true;
+            this.ButtonReloadTable.UseVisualStyleBackColor = false;
             this.ButtonReloadTable.Click += new System.EventHandler(this.ButtonReloadTable_Click);
             // 
             // btnExportExcel
             // 
+            this.btnExportExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.BackgroundImage")));
+            this.btnExportExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExportExcel.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnExportExcel.ForeColor = System.Drawing.Color.White;
             this.btnExportExcel.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnExportExcel.IconColor = System.Drawing.Color.Black;
             this.btnExportExcel.IconSize = 16;
-            this.btnExportExcel.Location = new System.Drawing.Point(659, 8);
+            this.btnExportExcel.Location = new System.Drawing.Point(676, 25);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Rotation = 0D;
             this.btnExportExcel.Size = new System.Drawing.Size(200, 37);
             this.btnExportExcel.TabIndex = 6;
             this.btnExportExcel.Text = "Xuất Excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
-            // donhang
+            // DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(884, 411);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(914, 494);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.ButtonReloadTable);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "donhang";
+            this.DoubleBuffered = true;
+            this.Name = "DonHang";
             this.Text = "Đơn hàng";
             this.Load += new System.EventHandler(this.donhang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

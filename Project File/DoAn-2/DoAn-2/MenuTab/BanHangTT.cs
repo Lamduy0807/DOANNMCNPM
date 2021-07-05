@@ -98,9 +98,9 @@ namespace DoAn_2.MenuTab
 
         private void btnHuyTT_Click(object sender, EventArgs e)
         {
-            Close();
+           Close();
            
-        }
+       }
 
         private void btnOKTT_Click(object sender, EventArgs e)
         {

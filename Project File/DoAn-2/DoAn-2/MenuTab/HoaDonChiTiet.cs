@@ -471,5 +471,10 @@ namespace DoAn_2.MenuTab
                 }
             }
         }
+
+        private void lbexit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

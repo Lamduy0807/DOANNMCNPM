@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HoaDonChiTiet));
             this.dataGridViewct = new System.Windows.Forms.DataGridView();
             this.hdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +47,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBoxttNo = new System.Windows.Forms.TextBox();
             this.btnthanhtoanno = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbexit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +56,7 @@
             // 
             this.dataGridViewct.AllowUserToAddRows = false;
             this.dataGridViewct.AllowUserToDeleteRows = false;
+            this.dataGridViewct.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.hdid,
@@ -68,11 +72,11 @@
             this.sdt,
             this.no,
             this.nhanvientt});
-            this.dataGridViewct.Location = new System.Drawing.Point(23, 66);
+            this.dataGridViewct.Location = new System.Drawing.Point(47, 111);
             this.dataGridViewct.Name = "dataGridViewct";
             this.dataGridViewct.ReadOnly = true;
             this.dataGridViewct.RowHeadersVisible = false;
-            this.dataGridViewct.Size = new System.Drawing.Size(835, 318);
+            this.dataGridViewct.Size = new System.Drawing.Size(835, 259);
             this.dataGridViewct.TabIndex = 1;
             // 
             // hdid
@@ -156,55 +160,96 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(702, 12);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(726, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 48);
             this.button1.TabIndex = 2;
             this.button1.Text = "In hóa đơn";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(549, 12);
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Location = new System.Drawing.Point(573, 57);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(147, 48);
             this.button3.TabIndex = 4;
             this.button3.Text = "Xuất file Excel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // textBoxttNo
             // 
-            this.textBoxttNo.Location = new System.Drawing.Point(23, 27);
+            this.textBoxttNo.Location = new System.Drawing.Point(47, 72);
             this.textBoxttNo.Name = "textBoxttNo";
             this.textBoxttNo.Size = new System.Drawing.Size(204, 20);
             this.textBoxttNo.TabIndex = 5;
             // 
             // btnthanhtoanno
             // 
-            this.btnthanhtoanno.Location = new System.Drawing.Point(254, 12);
+            this.btnthanhtoanno.BackColor = System.Drawing.Color.Transparent;
+            this.btnthanhtoanno.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnthanhtoanno.BackgroundImage")));
+            this.btnthanhtoanno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnthanhtoanno.Location = new System.Drawing.Point(278, 57);
             this.btnthanhtoanno.Name = "btnthanhtoanno";
             this.btnthanhtoanno.Size = new System.Drawing.Size(147, 48);
             this.btnthanhtoanno.TabIndex = 6;
             this.btnthanhtoanno.Text = "Thanh toán";
-            this.btnthanhtoanno.UseVisualStyleBackColor = true;
+            this.btnthanhtoanno.UseVisualStyleBackColor = false;
             this.btnthanhtoanno.Click += new System.EventHandler(this.btnthanhtoanno_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(47, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 15);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Tiền khách đưa";
+            // 
+            // lbexit
+            // 
+            this.lbexit.AutoSize = true;
+            this.lbexit.BackColor = System.Drawing.Color.Transparent;
+            this.lbexit.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbexit.ForeColor = System.Drawing.Color.White;
+            this.lbexit.Location = new System.Drawing.Point(863, 9);
+            this.lbexit.Name = "lbexit";
+            this.lbexit.Size = new System.Drawing.Size(19, 22);
+            this.lbexit.TabIndex = 9;
+            this.lbexit.Text = "x";
+            this.lbexit.Click += new System.EventHandler(this.lbexit_Click);
             // 
             // HoaDonChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(884, 411);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(935, 408);
+            this.Controls.Add(this.lbexit);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnthanhtoanno);
             this.Controls.Add(this.textBoxttNo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewct);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HoaDonChiTiet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn chi tiết";
+            this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
             this.Load += new System.EventHandler(this.HoaDonChiTiet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewct)).EndInit();
             this.ResumeLayout(false);
@@ -232,5 +277,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxttNo;
         private System.Windows.Forms.Button btnthanhtoanno;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbexit;
     }
 }

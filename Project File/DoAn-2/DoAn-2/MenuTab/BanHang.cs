@@ -717,7 +717,7 @@ namespace DoAn_2.MenuTab
         private void btnhuyHD_Click(object sender, EventArgs e)
         {
             HuyHD();
-            AutoIDHD();
+           AutoIDHD();
 
         }
 

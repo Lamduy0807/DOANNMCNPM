@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonViSP));
             this.btnHuy = new FontAwesome.Sharp.IconButton();
             this.btnXoa = new FontAwesome.Sharp.IconButton();
             this.btnSua = new FontAwesome.Sharp.IconButton();
@@ -42,69 +43,83 @@
             // 
             // btnHuy
             // 
+            this.btnHuy.BackColor = System.Drawing.Color.Transparent;
+            this.btnHuy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHuy.BackgroundImage")));
+            this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHuy.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnHuy.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnHuy.IconColor = System.Drawing.Color.Black;
             this.btnHuy.IconSize = 16;
-            this.btnHuy.Location = new System.Drawing.Point(147, 242);
+            this.btnHuy.Location = new System.Drawing.Point(281, 323);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Rotation = 0D;
             this.btnHuy.Size = new System.Drawing.Size(131, 43);
             this.btnHuy.TabIndex = 17;
             this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXoa
             // 
+            this.btnXoa.BackColor = System.Drawing.Color.Transparent;
+            this.btnXoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.BackgroundImage")));
+            this.btnXoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnXoa.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnXoa.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnXoa.IconColor = System.Drawing.Color.Black;
             this.btnXoa.IconSize = 16;
-            this.btnXoa.Location = new System.Drawing.Point(25, 242);
+            this.btnXoa.Location = new System.Drawing.Point(159, 323);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Rotation = 0D;
             this.btnXoa.Size = new System.Drawing.Size(116, 43);
             this.btnXoa.TabIndex = 16;
             this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
+            this.btnSua.BackColor = System.Drawing.Color.Transparent;
+            this.btnSua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSua.BackgroundImage")));
+            this.btnSua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSua.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnSua.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnSua.IconColor = System.Drawing.Color.Black;
             this.btnSua.IconSize = 16;
-            this.btnSua.Location = new System.Drawing.Point(147, 193);
+            this.btnSua.Location = new System.Drawing.Point(281, 274);
             this.btnSua.Name = "btnSua";
             this.btnSua.Rotation = 0D;
             this.btnSua.Size = new System.Drawing.Size(131, 43);
             this.btnSua.TabIndex = 15;
             this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
+            this.btnThem.BackColor = System.Drawing.Color.Transparent;
+            this.btnThem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThem.BackgroundImage")));
+            this.btnThem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnThem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnThem.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnThem.IconColor = System.Drawing.Color.Black;
             this.btnThem.IconSize = 16;
-            this.btnThem.Location = new System.Drawing.Point(25, 193);
+            this.btnThem.Location = new System.Drawing.Point(159, 274);
             this.btnThem.Name = "btnThem";
             this.btnThem.Rotation = 0D;
             this.btnThem.Size = new System.Drawing.Size(116, 43);
             this.btnThem.TabIndex = 14;
             this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 102);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(156, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 13;
@@ -113,8 +128,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 73);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(156, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 12;
@@ -122,14 +139,15 @@
             // 
             // textBoxTenDV
             // 
-            this.textBoxTenDV.Location = new System.Drawing.Point(128, 99);
+            this.textBoxTenDV.Location = new System.Drawing.Point(262, 180);
             this.textBoxTenDV.Name = "textBoxTenDV";
             this.textBoxTenDV.Size = new System.Drawing.Size(150, 20);
             this.textBoxTenDV.TabIndex = 11;
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(128, 73);
+            this.textBoxID.Enabled = false;
+            this.textBoxID.Location = new System.Drawing.Point(262, 154);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(150, 20);
@@ -140,8 +158,9 @@
             this.dataGridViewDVsp.AllowUserToAddRows = false;
             this.dataGridViewDVsp.AllowUserToDeleteRows = false;
             this.dataGridViewDVsp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDVsp.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewDVsp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDVsp.Location = new System.Drawing.Point(325, 73);
+            this.dataGridViewDVsp.Location = new System.Drawing.Point(459, 154);
             this.dataGridViewDVsp.Name = "dataGridViewDVsp";
             this.dataGridViewDVsp.ReadOnly = true;
             this.dataGridViewDVsp.Size = new System.Drawing.Size(271, 212);
@@ -152,8 +171,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(644, 372);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(914, 494);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -163,6 +183,7 @@
             this.Controls.Add(this.textBoxTenDV);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.dataGridViewDVsp);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
             this.Name = "DonViSP";

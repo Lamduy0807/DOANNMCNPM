@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace DoAn_2.MenuTab
 {
-
+    // test github pull
     public partial class SanPham : Form
     {
         SqlConnection connect = ClassKetnoi.connect;

@@ -182,6 +182,8 @@ namespace DoAn_2.MenuTab
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int Tong1 = 0;
+
             if (string.IsNullOrWhiteSpace(txtid.Text))
             {
                 MessageBox.Show("Trống mã sản phẩm!");
@@ -222,45 +224,120 @@ namespace DoAn_2.MenuTab
             else
             {
 
-                    byte[] img = null;
-                    FileStream fs = new FileStream(imgloc, FileMode.Open, FileAccess.Read);
-                    BinaryReader br = new BinaryReader(fs);
-                    img = br.ReadBytes((int)fs.Length);
+                byte[] img = null;
+                FileStream fs = new FileStream(imgloc, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                img = br.ReadBytes((int)fs.Length);
+                Boolean sameIDProduct = false;
+                int i = 0;
 
-                    //---------------- nhap kho ---------------------//
-                    using (var cmd = new SqlCommand("INSERT INTO nhapkho (masp,anhsp,tensp,soluongsp,gianhapsp,giabansp,loaisp,donvisp,ngaynhapkho,nvnhapkho) VALUES (@masp,@anhsp,@tensp,@soluongsp,@gianhapsp, @giabansp,@loaisp,@donvisp,@ngaynhapkho,@nvnhapkho)"))
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+
+                    if (txtid.Text == row.Cells[0].Value.ToString() && txttensp.Text == row.Cells[1].Value.ToString())
                     {
-                        cmd.Connection = connect;
-                        cmd.Parameters.AddWithValue("@masp", txtid.Text);
-                        cmd.Parameters.AddWithValue("@anhsp", img);
-                        cmd.Parameters.AddWithValue("@tensp", txttensp.Text);
-                        cmd.Parameters.AddWithValue("@soluongsp", txtsl.Text);
-                        cmd.Parameters.AddWithValue("@gianhapsp", txtgianhap.Text);
-                        cmd.Parameters.AddWithValue("@giabansp", txtgiaban.Text);
-                        cmd.Parameters.AddWithValue("@loaisp", comboloai.GetItemText(comboloai.SelectedItem));
-                        cmd.Parameters.AddWithValue("@donvisp", combodonvi.GetItemText(combodonvi.SelectedItem));
-                        cmd.Parameters.Add("@ngaynhapkho", SqlDbType.DateTime);
-                        cmd.Parameters["@ngaynhapkho"].Value = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@nvnhapkho", Form1.usernv);
-                        connect.Open();
-                        if (cmd.ExecuteNonQuery() > 0)
+                        sameIDProduct = true;
+                        break;
+                    }
+                    i++;
+                }
+
+                if (sameIDProduct == true)
+                {
+                    int Tong = 0;
+                    Tong = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()) + int.Parse(txtsl.Text);
+                    Tong1 = Tong;
+                }
+
+                //---------------- nhap kho ---------------------//
+                using (var cmd5 = new SqlCommand("select masp from nhapkho where masp=@masp"))
+                {
+                    cmd5.Connection = connect;
+                    cmd5.Parameters.AddWithValue("@masp", txtid.Text);
+                    connect.Open();
+                    // cmd3.ExecuteNonQuery();
+
+                   // SqlDataReader reader = cmd5.ExecuteReader();
+                    if (sameIDProduct)
+                    {
+                        //  connect.Close();
+                        // da ton tai
+                        using (var cmd6 = new SqlCommand("update nhapkho set masp=@masp,anhsp=@anhsp,tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,ngaynhapkho=@ngaynhapkho,nvnhapkho=@nvnhapkho where masp=@masp"))
                         {
-                            MessageBox.Show("Đã thêm");
+                            cmd6.Connection = connect;
+                            cmd6.Parameters.AddWithValue("@masp", txtid.Text);
+                            cmd6.Parameters.AddWithValue("@anhsp", img);
+                            cmd6.Parameters.AddWithValue("@tensp", txttensp.Text);
+                            cmd6.Parameters.AddWithValue("@soluongsp", Tong1.ToString());
+                            cmd6.Parameters.AddWithValue("@gianhapsp", txtgianhap.Text);
+                            cmd6.Parameters.AddWithValue("@giabansp", txtgiaban.Text);
+                            cmd6.Parameters.AddWithValue("@loaisp", comboloai.GetItemText(comboloai.SelectedItem));
+                            cmd6.Parameters.AddWithValue("@donvisp", combodonvi.GetItemText(combodonvi.SelectedItem));
+                            cmd6.Parameters.Add("@ngaynhapkho", SqlDbType.DateTime);
+                            cmd6.Parameters["@ngaynhapkho"].Value = DateTime.Now;
+                            cmd6.Parameters.AddWithValue("@nvnhapkho", Form1.usernv);
                             connect.Close();
-                           // clearsp();
-                            gridviewsp();
-                            
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thêm không thành công!");
+                            connect.Open();
+                            if (cmd6.ExecuteNonQuery() > 0)
+                            {
+                                connect.Close();
+                                //  MessageBox.Show("Đã thêm");
+                                gridviewsp();
+                               // clearsp();
+                            }
+                            else
+                            {
+                                connect.Close();
+                                // MessageBox.Show("Thêm không thành công!");
+                            }
                             connect.Close();
                         }
                         connect.Close();
-
                     }
-            //---------------- ton kho ---------------------//
-                    using (var cmd3 = new SqlCommand("select masp from tonkho where masp=@masp"))
+                    else
+                    {
+                        connect.Close();
+                        using (var cmd = new SqlCommand("INSERT INTO nhapkho (masp,anhsp,tensp,soluongsp,gianhapsp,giabansp,loaisp,donvisp,ngaynhapkho,nvnhapkho) VALUES (@masp,@anhsp,@tensp,@soluongsp,@gianhapsp, @giabansp,@loaisp,@donvisp,@ngaynhapkho,@nvnhapkho)"))
+                        {
+                            cmd.Connection = connect;
+                            cmd.Parameters.AddWithValue("@masp", txtid.Text);
+                            cmd.Parameters.AddWithValue("@anhsp", img);
+                            cmd.Parameters.AddWithValue("@tensp", txttensp.Text);
+                            cmd.Parameters.AddWithValue("@soluongsp", txtsl.Text);
+                            cmd.Parameters.AddWithValue("@gianhapsp", txtgianhap.Text);
+                            cmd.Parameters.AddWithValue("@giabansp", txtgiaban.Text);
+                            cmd.Parameters.AddWithValue("@loaisp", comboloai.GetItemText(comboloai.SelectedItem));
+                            cmd.Parameters.AddWithValue("@donvisp", combodonvi.GetItemText(combodonvi.SelectedItem));
+                            cmd.Parameters.Add("@ngaynhapkho", SqlDbType.DateTime);
+                            cmd.Parameters["@ngaynhapkho"].Value = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@nvnhapkho", Form1.usernv);
+                           
+                            connect.Open();
+                            
+                            if (cmd.ExecuteNonQuery() > 0)
+                            {
+                                MessageBox.Show("Đã thêm");
+                                connect.Close();
+                                // clearsp();
+                                gridviewsp();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Thêm không thành công!");
+                                connect.Close();
+                            }
+                            connect.Close();
+
+                        }                    
+                        connect.Close();
+                    }
+                    //reader.Close();
+                    connect.Close();
+                }
+
+                //---------------- ton kho ---------------------//
+                using (var cmd3 = new SqlCommand("select masp from tonkho where masp=@masp"))
                     {
                         cmd3.Connection = connect;
                         cmd3.Parameters.AddWithValue("@masp", txtid.Text);
@@ -278,7 +355,7 @@ namespace DoAn_2.MenuTab
                                 cmd4.Parameters.AddWithValue("@masp", txtid.Text);
                                 cmd4.Parameters.AddWithValue("@anhsp", img);
                                 cmd4.Parameters.AddWithValue("@tensp", txttensp.Text);
-                                cmd4.Parameters.AddWithValue("@soluongsp", txtsl.Text);
+                                cmd4.Parameters.AddWithValue("@soluongsp", Tong1.ToString());
                                 cmd4.Parameters.AddWithValue("@gianhapsp", txtgianhap.Text);
                                 cmd4.Parameters.AddWithValue("@giabansp", txtgiaban.Text);
                                 cmd4.Parameters.AddWithValue("@loaisp", comboloai.GetItemText(comboloai.SelectedItem));
@@ -289,7 +366,7 @@ namespace DoAn_2.MenuTab
                                 if (cmd4.ExecuteNonQuery() > 0)
                                 {
                                     connect.Close();
-                                    //  MessageBox.Show("Đã thêm");
+                                    MessageBox.Show(txtid.Text);
                                     //  gridviewsp();
                                       clearsp();
                                 }
@@ -324,7 +401,7 @@ namespace DoAn_2.MenuTab
                                 if (cmd2.ExecuteNonQuery() > 0)
                                 {
                                     connect.Close();
-                                    //MessageBox.Show("Đã thêm");
+                                    MessageBox.Show("Đã thêm");
                                     //gridviewsp();
                                     clearsp();
                                 }

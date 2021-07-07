@@ -281,7 +281,6 @@ D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\bin\Debug\Microsoft.ReportViewer.C
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\bin\Debug\Microsoft.ReportViewer.WinForms.DLL
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.csprojAssemblyReference.cache
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.csproj.ResolveComReference.cache
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn_2.Form1.resources
 D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn_2.FormLoading.resources
@@ -337,3 +336,4 @@ D:\WinformsCode\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.csproj.Co
 D:\WinformsCode\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.csproj.CopyComplete
 D:\WinformsCode\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.exe
 D:\WinformsCode\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.pdb
+D:\DOAN\DOANNMCNPM\Project File\DoAn-2\DoAn-2\obj\Debug\DoAn-2.csproj.AssemblyReference.cache

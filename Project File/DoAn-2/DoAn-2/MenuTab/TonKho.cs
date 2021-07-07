@@ -162,13 +162,16 @@ namespace DoAn_2.MenuTab
                     reader.Read();
                     if (reader.HasRows)
                     {
+                        
                         byte[] img = (byte[])(reader[0]);
+                        
                         if (img == null)
                         {
                             pictureBox1.Image = null;
                         }
                         else
                         {
+
                             MemoryStream ms = new MemoryStream(img);
                             pictureBox1.Image = Image.FromStream(ms);
 
@@ -208,7 +211,7 @@ namespace DoAn_2.MenuTab
                     FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
                     img = br.ReadBytes((int)fs.Length);
-                    using (var cmd = new SqlCommand("update tonkho set tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,anhsp=@anhsp where masp=@masp"))
+                    using (var cmd = new SqlCommand("update tonkho set tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,anhsp=@anhsp,giamgia=@giamgia where masp=@masp"))
                     {
                         cmd.Connection = connect;
                         cmd.Parameters.AddWithValue("@masp", txtId.Text);
@@ -216,6 +219,7 @@ namespace DoAn_2.MenuTab
                         cmd.Parameters.AddWithValue("@soluongsp", txtSl.Text);
                         cmd.Parameters.AddWithValue("@gianhapsp", txtGianhap.Text);
                         cmd.Parameters.AddWithValue("@giabansp", txtGiaban.Text);
+                        cmd.Parameters.AddWithValue("@giamgia", txtGiamGia.Text);
                         cmd.Parameters.AddWithValue("@loaisp", comboLoai.GetItemText(comboLoai.SelectedItem));
                         cmd.Parameters.AddWithValue("@donvisp", comboDonvi.GetItemText(comboDonvi.SelectedItem));
                         cmd.Parameters.AddWithValue("@anhsp", img);
@@ -394,6 +398,17 @@ namespace DoAn_2.MenuTab
         private void ButtonAutoid_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public static string BinaryToString(string data)
+        {
+            List<Byte> byteList = new List<Byte>();
+
+            for (int i = 0; i < data.Length; i += 8)
+            {
+                byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
+            }
+            return Encoding.ASCII.GetString(byteList.ToArray());
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)

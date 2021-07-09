@@ -12,7 +12,7 @@ namespace DoAn_2
 {
     class ClassKetnoi
     {
-       public static SqlConnection connect = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=doan-3;Integrated Security=True");
+       public static SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-PBS9A7G\SQLEXPRESS;Initial Catalog=doan-3;Integrated Security=True");
 
     }
 }

@@ -95,8 +95,10 @@
             // txttenkh
             // 
             this.txttenkh.BackColor = System.Drawing.Color.White;
+            this.txttenkh.Enabled = false;
             this.txttenkh.Location = new System.Drawing.Point(340, 25);
             this.txttenkh.Name = "txttenkh";
+            this.txttenkh.ReadOnly = true;
             this.txttenkh.Size = new System.Drawing.Size(201, 20);
             this.txttenkh.TabIndex = 1;
             // 
@@ -115,7 +117,6 @@
             this.dvsanpham,
             this.loaisp,
             this.giamgiasp});
-            this.dataGridView1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.Location = new System.Drawing.Point(26, 70);
             this.dataGridView1.Name = "dataGridView1";
@@ -123,6 +124,7 @@
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(519, 271);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // masp
@@ -769,6 +771,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn masp;
         private System.Windows.Forms.DataGridViewTextBoxColumn tensp;
         private System.Windows.Forms.DataGridViewTextBoxColumn soluongsp;
@@ -781,6 +784,5 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtDonViSP;
         private System.Windows.Forms.TextBox txtLoaiSP;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

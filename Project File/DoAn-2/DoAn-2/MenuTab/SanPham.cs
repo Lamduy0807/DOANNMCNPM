@@ -114,7 +114,7 @@ namespace DoAn_2.MenuTab
                     }
                     else
                     {
-                        MessageBox.Show("ko tim thay");
+                        //MessageBox.Show("ko tim thay");
                         s3 = String.Concat(s1a, s2a);
                     }
                     //  String s3 = String.Concat(s1a, s2a)
@@ -262,13 +262,13 @@ namespace DoAn_2.MenuTab
                     {
                         //  connect.Close();
                         // da ton tai
-                        using (var cmd6 = new SqlCommand("update nhapkho set masp=@masp,anhsp=@anhsp,tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,ngaynhapkho=@ngaynhapkho,nvnhapkho=@nvnhapkho where masp=@masp"))
+                        using (var cmd6 = new SqlCommand("INSERT INTO nhapkho (masp,anhsp,tensp,soluongsp,gianhapsp,giabansp,loaisp,donvisp,ngaynhapkho,nvnhapkho) VALUES (@masp,@anhsp,@tensp,@soluongsp,@gianhapsp, @giabansp,@loaisp,@donvisp,@ngaynhapkho,@nvnhapkho)"))
                         {
                             cmd6.Connection = connect;
                             cmd6.Parameters.AddWithValue("@masp", txtid.Text);
                             cmd6.Parameters.AddWithValue("@anhsp", img);
                             cmd6.Parameters.AddWithValue("@tensp", txttensp.Text);
-                            cmd6.Parameters.AddWithValue("@soluongsp", Tong1.ToString());
+                            cmd6.Parameters.AddWithValue("@soluongsp", txtsl.Text);
                             cmd6.Parameters.AddWithValue("@gianhapsp", txtgianhap.Text);
                             cmd6.Parameters.AddWithValue("@giabansp", txtgiaban.Text);
                             cmd6.Parameters.AddWithValue("@loaisp", comboloai.GetItemText(comboloai.SelectedItem));
@@ -276,6 +276,7 @@ namespace DoAn_2.MenuTab
                             cmd6.Parameters.Add("@ngaynhapkho", SqlDbType.DateTime);
                             cmd6.Parameters["@ngaynhapkho"].Value = DateTime.Now;
                             cmd6.Parameters.AddWithValue("@nvnhapkho", Form1.usernv);
+                         
                             connect.Close();
                             connect.Open();
                             if (cmd6.ExecuteNonQuery() > 0)
@@ -366,14 +367,14 @@ namespace DoAn_2.MenuTab
                                 if (cmd4.ExecuteNonQuery() > 0)
                                 {
                                     connect.Close();
-                                    MessageBox.Show(txtid.Text);
+                                    MessageBox.Show("Đã thêm");
                                     //  gridviewsp();
                                       clearsp();
                                 }
                                 else
                                 {
                                     connect.Close();
-                                    // MessageBox.Show("Thêm không thành công!");
+                                    MessageBox.Show("Thêm không thành công!");
                                 }
                                 connect.Close();
                             }

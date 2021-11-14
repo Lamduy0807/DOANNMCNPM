@@ -56,7 +56,6 @@ namespace DoAn_2.MenuTab
             txtgiamphantramsp.Clear();
             txttiensp.Clear();
             txtDonViSP.Text = null;
-
             txtLoaiSP.Text = null;
         }
         double sum;
@@ -82,73 +81,81 @@ namespace DoAn_2.MenuTab
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
-            bool found = false;
-            if (dataGridView1.Rows.Count > 0)
+            BanHangClass bh = new BanHangClass();
+            if (bh.CheckData(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text))
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                bool found = false;
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    if (Convert.ToString(row.Cells[0].Value) == txtmasp.Text)
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        //neu them san pham giong nhau se cộng dồn số lượng và tiền vào ô
-                        row.Cells[2].Value = (int.Parse(txtsoluongsp.Text) + Convert.ToInt16(row.Cells[2].Value.ToString()));
-                        row.Cells[4].Value = (double.Parse(txttiensp.Text) + Convert.ToDouble(row.Cells[4].Value.ToString()));
-                        found = true;
-                        /////////////////////
+                        if (Convert.ToString(row.Cells[0].Value) == txtmasp.Text)
+                        {
+                            //neu them san pham giong nhau se cộng dồn số lượng và tiền vào ô
+                            row.Cells[2].Value = (int.Parse(txtsoluongsp.Text) + Convert.ToInt16(row.Cells[2].Value.ToString()));
+                            row.Cells[4].Value = (double.Parse(txttiensp.Text) + Convert.ToDouble(row.Cells[4].Value.ToString()));
+                            found = true;
+                            /////////////////////
+                        }
+                    }
+                    if (!found)
+                    {
+                        dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text);
                     }
                 }
-                if (!found)
+                else
                 {
                     dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text);
                 }
+                /////////////////////
+                //int n = dataGridView1.Rows.Add();
+                //dataGridView1.Rows[n].Cells[0].Value = txtmasp.Text;
+                //dataGridView1.Rows[n].Cells[1].Value = txttensp.Text;
+                //dataGridView1.Rows[n].Cells[2].Value = txtsoluongsp.Text;
+                //dataGridView1.Rows[n].Cells[3].Value = txtdongiasp.Text;
+                //dataGridView1.Rows[n].Cells[4].Value = txttiensp.Text;
+                //dataGridView1.Rows[n].Cells[5].Value = txtDonViSP.Text;
+                ////    dataGridView1.Rows[n].Cells[6].Value = txtgiamphantramsp.Text;
+
+                //------------ tinh tong tien sp trong datagridview-------------///
+                sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                }
+                txttongcongtiensp.Text = sum.ToString("###,###");
+                //------------------- update sql -----------------//
+                try
+                {
+                    using (var cmdupdatesl = new SqlCommand("update tonkho set soluongsp=soluongsp - '" + txtsoluongsp.Text + "' where masp='" + txtmasp.Text + "' "))
+                    {
+                        cmdupdatesl.Connection = connect;
+                        //cmd.Parameters.AddWithValue("@masp", txtmasp.Text);
+                        //cmd.Parameters.AddWithValue("@slsp", txtsoluongsp.Text);
+                        connect.Open();
+                        if (cmdupdatesl.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Đã update");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thành công!");
+                        }
+                        connect.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    connect.Close();
+                    MessageBox.Show("loi update ne" + ex.Message);
+                }
+                ClearSP();
             }
             else
             {
-                dataGridView1.Rows.Add(txtmasp.Text, txttensp.Text, txtsoluongsp.Text, txtdongiasp.Text, txttiensp.Text, txtDonViSP.Text, txtLoaiSP.Text, txtgiamphantramsp.Text);
+                MessageBox.Show("check input data!");
             }
-            /////////////////////
-            //int n = dataGridView1.Rows.Add();
-            //dataGridView1.Rows[n].Cells[0].Value = txtmasp.Text;
-            //dataGridView1.Rows[n].Cells[1].Value = txttensp.Text;
-            //dataGridView1.Rows[n].Cells[2].Value = txtsoluongsp.Text;
-            //dataGridView1.Rows[n].Cells[3].Value = txtdongiasp.Text;
-            //dataGridView1.Rows[n].Cells[4].Value = txttiensp.Text;
-            //dataGridView1.Rows[n].Cells[5].Value = txtDonViSP.Text;
-            ////    dataGridView1.Rows[n].Cells[6].Value = txtgiamphantramsp.Text;
-
-            //------------ tinh tong tien sp trong datagridview-------------///
-            sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-            {
-                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-            }
-            txttongcongtiensp.Text = sum.ToString("###,###");
-            //------------------- update sql -----------------//
-            try
-            {
-                using (var cmdupdatesl = new SqlCommand("update tonkho set soluongsp=soluongsp - '" + txtsoluongsp.Text + "' where masp='" + txtmasp.Text + "' "))
-                {
-                    cmdupdatesl.Connection = connect;
-                    //cmd.Parameters.AddWithValue("@masp", txtmasp.Text);
-                    //cmd.Parameters.AddWithValue("@slsp", txtsoluongsp.Text);
-                    connect.Open();
-                    if (cmdupdatesl.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Đã update");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không thành công!");
-                    }
-                    connect.Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                connect.Close();
-                MessageBox.Show("loi update ne" + ex.Message);
-            }
-            ClearSP();
         }
 
         private void btnsua_Click(object sender, EventArgs e)

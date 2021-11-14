@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\TestingProject\\TestingProject.csproj": {}
+  },
+  "projects": {
+    "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\DoAn-2\\DoAn-2.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\DoAn-2\\DoAn-2.csproj",
+        "projectName": "DoAn-2",
+        "projectPath": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\DoAn-2\\DoAn-2.csproj"
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\TestingProject\\TestingProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\TestingProject\\TestingProject.csproj",
+        "projectName": "TestingProject",
+        "projectPath": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\TestingProject\\TestingProject.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\TestingProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\DoAn-2\\DoAn-2.csproj": {
+                "projectPath": "D:\\OOAD\\Tham Khảo\\DOANNMCNPM\\Project File\\DoAn-2\\DoAn-2\\DoAn-2.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.16.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

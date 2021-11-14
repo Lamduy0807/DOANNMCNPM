@@ -84,22 +84,9 @@ namespace DoAn_2.MenuTab
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserNV.Text))
-            {
-                MessageBox.Show("Trống!");
-                txtUserNV.Select();
-            }
-
-            if (string.IsNullOrWhiteSpace(txtNameNV.Text))
-            {
-                txtNameNV.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtPassNV.Text))
-            {
-                txtPassNV.Select();
-            }
-            else
-            {
+            EmployeeInformation em = new EmployeeInformation();
+            if(em.CheckInput( txtUserNV.Text, txtNameNV.Text, txtPassNV.Text))
+            { 
                 using (var cmd = new SqlCommand("INSERT INTO nhanvien (usernv,tennv,passnv) VALUES (@usernv,@tennv,@passnv)"))
                 {
                     cmd.Connection = connect;
@@ -124,6 +111,10 @@ namespace DoAn_2.MenuTab
                     connect.Close();
 
                 }
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công!");
             }
         }
 
@@ -291,25 +282,9 @@ namespace DoAn_2.MenuTab
 
         private void BtnSaveThongtin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenShop.Text))
-            {
-                MessageBox.Show("Trống!");
-                txtTenShop.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtSDT.Text))
-            {
-                txtSDT.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
-            {
-                txtDiaChi.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtLoiChao.Text))
-            {
-                txtLoiChao.Select();
-            }
-            else
-            {
+            ShopInforClass s = new ShopInforClass();
+            if(s.CheckInformation(txtTenShop.Text, txtSDT.Text, txtDiaChi.Text, txtLoiChao.Text))
+            { 
                 try
                 {
                     using (var cmd = new SqlCommand("update ThongTinShop set TenShop=@TenShop,SDT=@SDT,Diachi=@Diachi,Loichao=@Loichao where ID=1"))
@@ -339,6 +314,10 @@ namespace DoAn_2.MenuTab
                     connect.Close();
                     MessageBox.Show("Error during update tt: " + ex.Message);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Lưu không thành công!");
             }
         }
 

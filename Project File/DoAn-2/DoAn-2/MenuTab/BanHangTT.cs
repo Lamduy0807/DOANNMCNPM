@@ -105,22 +105,95 @@ namespace DoAn_2.MenuTab
         private void btnOKTT_Click(object sender, EventArgs e)
         {
             // neu tiền thối lại âm thì sẽ tính là nợ
-            string txttienthoi = txtTienThoiLai.Text;
-            if (txtTienThoiLai.Text.StartsWith("-"))
+            BanHangTTClass bhtt = new BanHangTTClass();
+            if (bhtt.CheckTT(txtTienKhachDua.Text))
             {
-                if (string.IsNullOrEmpty(sdtkh) && string.IsNullOrEmpty(tenkh))
+                string txttienthoi = txtTienThoiLai.Text;
+                if (txtTienThoiLai.Text.StartsWith("-"))
                 {
-                    MessageBox.Show("Khách hàng chưa đăng kí không thể nợ");
-                    Close();
+                    if (string.IsNullOrEmpty(sdtkh) && string.IsNullOrEmpty(tenkh))
+                    {
+                        MessageBox.Show("Khách hàng chưa đăng kí không thể nợ");
+                        Close();
+                    }
+                    else
+                    {
+                        string RemovetxtTienthoi = Regex.Replace(txttienthoi, @"[^0-9a-zA-Z]+", "");
+                        MessageBox.Show(RemovetxtTienthoi);
+                        txtno = int.Parse(RemovetxtTienthoi);
+                        thanhtoanno = int.Parse(txtTienKhachDua.Text);//tien no trong sql
+                        TienOK = thanhtoanno; //tienthanhtoan trong sql = tiền khách đưa khi nợ
+
+
+                        try
+                        {
+                            using (var cmd = new SqlCommand("INSERT INTO HoaDon (HDmasp,HDtensp,HDsl,HDdongia,HDloai,HDthanhtoan,HDdonvi,HDno,SDT,TenKH,HDtime,nvthanhtoan) VALUES (@HDmasp,@HDtensp,@HDsl,@HDdongia,@HDloai, @HDthanhtoan,@HDdonvi,@HDno,@SDT,@TenKH,@HDtime,@nvthanhtoan)"))
+                            {
+                                cmd.Connection = connect;
+                                //  cmd.Parameters.AddWithValue("@IDhoadon", BanHang.IDhoadon);
+                                cmd.Parameters.AddWithValue("@HDmasp", BanHang.hDMaSP);
+                                cmd.Parameters.AddWithValue("@HDtensp", BanHang.hDTenSP);
+                                cmd.Parameters.AddWithValue("@HDsl", BanHang.hDSL);
+                                cmd.Parameters.AddWithValue("@HDdongia", BanHang.hDDonGia);
+                                cmd.Parameters.AddWithValue("@HDloai", BanHang.hDLoai);
+                                cmd.Parameters.AddWithValue("@HDthanhtoan", TienOK);//
+
+                                cmd.Parameters.AddWithValue("@HDdonvi", BanHang.hDDonVi);
+                                cmd.Parameters.AddWithValue("@HDno", txtno);
+
+                                cmd.Parameters.AddWithValue("@SDT", BanHang.sDT);
+                                cmd.Parameters.AddWithValue("@TenKH", BanHang.tenKH);
+                                cmd.Parameters.Add("@HDtime", SqlDbType.DateTime);
+                                cmd.Parameters["@HDtime"].Value = DateTime.Now;
+                                cmd.Parameters.AddWithValue("@nvthanhtoan", MainControl.tennv);
+                                connect.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    // MessageBox.Show("Đã thêm");
+                                    connect.Close();
+                                    PrintDialog printDialog = new PrintDialog();
+
+                                    PrintDocument printDocument = new PrintDocument();
+
+                                    printDialog.Document = printDocument; //add the document to the dialog box...        
+
+                                    printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(CreateReceipt); //add an event handler that will do the printing
+
+                                    //on a till you will not want to ask the user where to print but this is fine for the test envoironment.
+
+                                    DialogResult result = printDialog.ShowDialog();
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        printDocument.Print();
+
+                                    }
+                                    Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Thêm không thành công!");
+                                }
+                                connect.Close();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            connect.Close();
+
+                            MessageBox.Show("Error during insert: " + ex.Message);
+                        }
+                    }
+
+
                 }
                 else
                 {
-                    string RemovetxtTienthoi = Regex.Replace(txttienthoi, @"[^0-9a-zA-Z]+", "");
-                    MessageBox.Show(RemovetxtTienthoi);
-                    txtno = int.Parse(RemovetxtTienthoi);
-                    thanhtoanno = int.Parse(txtTienKhachDua.Text);//tien no trong sql
-                    TienOK = thanhtoanno; //tienthanhtoan trong sql = tiền khách đưa khi nợ
-
+                    ////them vao sql khi khach không nợ
+                    txtno = 0;
+                    string tienthanhtoan = txtTTOK.Text;
+                    string CutTien = Regex.Replace(tienthanhtoan, @"[^0-9a-zA-Z]+", "");
+                    TienOK = int.Parse(CutTien);//tienthanhtoan trong sql = tiền thánh toán
 
                     try
                     {
@@ -148,6 +221,25 @@ namespace DoAn_2.MenuTab
                             {
                                 // MessageBox.Show("Đã thêm");
                                 connect.Close();
+
+                                //update sql so luong
+                                //using (var cmd2 = new SqlCommand("update sanpham set soluongsp = soluongsp - 1 where masp=@masp"))
+                                //{
+                                //    cmd2.Connection = connect;
+                                //    cmd2.Parameters.AddWithValue("@masp", txtid.Text);
+                                //    connect.Open();
+                                //    if (cmd2.ExecuteNonQuery() > 0)
+                                //    {
+                                //        MessageBox.Show("Đã xóa");                               
+                                //    }
+                                //    else
+                                //    {
+                                //        MessageBox.Show("Không thành công!");
+                                //    }
+                                //    connect.Close();
+                                //}
+
+                                ///print hoa don
                                 PrintDialog printDialog = new PrintDialog();
 
                                 PrintDocument printDocument = new PrintDocument();
@@ -183,96 +275,12 @@ namespace DoAn_2.MenuTab
                 }
 
 
+                Close();
             }
             else
             {
-                ////them vao sql khi khach không nợ
-                txtno = 0;
-                string tienthanhtoan = txtTTOK.Text;
-                string CutTien = Regex.Replace(tienthanhtoan, @"[^0-9a-zA-Z]+", "");
-                TienOK = int.Parse(CutTien);//tienthanhtoan trong sql = tiền thánh toán
-
-                try
-                {
-                    using (var cmd = new SqlCommand("INSERT INTO HoaDon (HDmasp,HDtensp,HDsl,HDdongia,HDloai,HDthanhtoan,HDdonvi,HDno,SDT,TenKH,HDtime,nvthanhtoan) VALUES (@HDmasp,@HDtensp,@HDsl,@HDdongia,@HDloai, @HDthanhtoan,@HDdonvi,@HDno,@SDT,@TenKH,@HDtime,@nvthanhtoan)"))
-                    {
-                        cmd.Connection = connect;
-                        //  cmd.Parameters.AddWithValue("@IDhoadon", BanHang.IDhoadon);
-                        cmd.Parameters.AddWithValue("@HDmasp", BanHang.hDMaSP);
-                        cmd.Parameters.AddWithValue("@HDtensp", BanHang.hDTenSP);
-                        cmd.Parameters.AddWithValue("@HDsl", BanHang.hDSL);
-                        cmd.Parameters.AddWithValue("@HDdongia", BanHang.hDDonGia);
-                        cmd.Parameters.AddWithValue("@HDloai", BanHang.hDLoai);
-                        cmd.Parameters.AddWithValue("@HDthanhtoan", TienOK);//
-
-                        cmd.Parameters.AddWithValue("@HDdonvi", BanHang.hDDonVi);
-                        cmd.Parameters.AddWithValue("@HDno", txtno);
-
-                        cmd.Parameters.AddWithValue("@SDT", BanHang.sDT);
-                        cmd.Parameters.AddWithValue("@TenKH", BanHang.tenKH);
-                        cmd.Parameters.Add("@HDtime", SqlDbType.DateTime);
-                        cmd.Parameters["@HDtime"].Value = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@nvthanhtoan", MainControl.tennv);
-                        connect.Open();
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            // MessageBox.Show("Đã thêm");
-                            connect.Close();
-
-                            //update sql so luong
-                            //using (var cmd2 = new SqlCommand("update sanpham set soluongsp = soluongsp - 1 where masp=@masp"))
-                            //{
-                            //    cmd2.Connection = connect;
-                            //    cmd2.Parameters.AddWithValue("@masp", txtid.Text);
-                            //    connect.Open();
-                            //    if (cmd2.ExecuteNonQuery() > 0)
-                            //    {
-                            //        MessageBox.Show("Đã xóa");                               
-                            //    }
-                            //    else
-                            //    {
-                            //        MessageBox.Show("Không thành công!");
-                            //    }
-                            //    connect.Close();
-                            //}
-
-                            ///print hoa don
-                            PrintDialog printDialog = new PrintDialog();
-
-                            PrintDocument printDocument = new PrintDocument();
-
-                            printDialog.Document = printDocument; //add the document to the dialog box...        
-
-                            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(CreateReceipt); //add an event handler that will do the printing
-
-                            //on a till you will not want to ask the user where to print but this is fine for the test envoironment.
-
-                            DialogResult result = printDialog.ShowDialog();
-
-                            if (result == DialogResult.OK)
-                            {
-                                printDocument.Print();
-
-                            }
-                            Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thêm không thành công!");
-                        }
-                        connect.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    connect.Close();
-
-                    MessageBox.Show("Error during insert: " + ex.Message);
-                }
+                MessageBox.Show("invalid input!");
             }
-
-            
-            Close();
         }
 
         public void CreateReceipt(object sender, System.Drawing.Printing.PrintPageEventArgs e)

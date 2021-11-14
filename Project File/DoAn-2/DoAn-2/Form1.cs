@@ -91,28 +91,32 @@ namespace DoAn_2
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
+        
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            usernv = txtuser.Text;
-            string querynv = "Select * From nhanvien where usernv ='" +txtuser.Text+"' and passnv='" +txtpass.Text+"' ";
-            SqlDataAdapter sqldata = new SqlDataAdapter(querynv, connect);
-            DataTable datatb1 = new DataTable();
-            sqldata.Fill(datatb1);
-            if(datatb1.Rows.Count==1)
+            
+            LoginClass login = new LoginClass();
+            if (login.CheckData(txtuser.Text, txtpass.Text))
             {
-                MainControl mainmenu = new MainControl();
-                this.Hide();
-                mainmenu.Show();
+                if (login.Login(txtuser.Text, txtpass.Text))
+                {
+                    usernv = txtuser.Text;
+                    MainControl mainmenu = new MainControl();
+                    this.Hide();
+                    mainmenu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username or Password!");
+                }
             }
             else
             {
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+                MessageBox.Show("Invalid Data!");
             }
-               
-            
 
         }
+        
 
 
     }

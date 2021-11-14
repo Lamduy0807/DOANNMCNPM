@@ -146,36 +146,44 @@ namespace DoAn_2.MenuTab
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxID.Text))
+            DonviSPClass dv = new DonviSPClass();
+            if (dv.CheckInput(textBoxID.Text, textBoxTenDV.Text))
             {
-                MessageBox.Show("Trống mã loại!");
-                textBoxID.Select();
+                if (string.IsNullOrWhiteSpace(textBoxID.Text))
+                {
+                    MessageBox.Show("Trống mã loại!");
+                    textBoxID.Select();
+                }
+                else
+                {
+                    using (var cmd = new SqlCommand("INSERT INTO donvisp (IDdonvi,TenDonvi) VALUES (@IDdonvi,@TenDonvi)"))
+                    {
+                        cmd.Connection = connect;
+                        cmd.Parameters.AddWithValue("@IDdonvi", textBoxID.Text);
+                        cmd.Parameters.AddWithValue("@TenDonvi", textBoxTenDV.Text);
+
+                        connect.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Đã thêm");
+                            connect.Close();
+                            clear();
+                            gridviewsp();
+                            autoidSPLoai();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm không thành công!");
+                            connect.Close();
+                        }
+                        connect.Close();
+
+                    }
+                }
             }
             else
             {
-                using (var cmd = new SqlCommand("INSERT INTO donvisp (IDdonvi,TenDonvi) VALUES (@IDdonvi,@TenDonvi)"))
-                {
-                    cmd.Connection = connect;
-                    cmd.Parameters.AddWithValue("@IDdonvi", textBoxID.Text);
-                    cmd.Parameters.AddWithValue("@TenDonvi", textBoxTenDV.Text);
-
-                    connect.Open();
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Đã thêm");
-                        connect.Close();
-                        clear();
-                        gridviewsp();
-                        autoidSPLoai();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm không thành công!");
-                        connect.Close();
-                    }
-                    connect.Close();
-
-                }
+                MessageBox.Show("Invalid input!");
             }
 
         }

@@ -199,50 +199,59 @@ namespace DoAn_2.MenuTab
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtId.Text))
+            StockClass s = new StockClass();
+            if (s.CheckDatainput(txtId.Text, txtTensp.Text, txtSl.Text, txtGianhap.Text, txtGiamGia.Text,
+                comboLoai.GetItemText(comboLoai.SelectedItem), comboDonvi.GetItemText(comboDonvi.SelectedItem), txtGiamGia.Text))
             {
-                MessageBox.Show("Thông tin trống!");
+                if (string.IsNullOrWhiteSpace(txtId.Text))
+                {
+                    MessageBox.Show("Thông tin trống!");
+                }
+                else
+                {
+                    try
+                    {
+                        byte[] img = null;
+                        FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                        BinaryReader br = new BinaryReader(fs);
+                        img = br.ReadBytes((int)fs.Length);
+                        using (var cmd = new SqlCommand("update tonkho set tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,anhsp=@anhsp,giamgia=@giamgia where masp=@masp"))
+                        {
+                            cmd.Connection = connect;
+                            cmd.Parameters.AddWithValue("@masp", txtId.Text);
+                            cmd.Parameters.AddWithValue("@tensp", txtTensp.Text);
+                            cmd.Parameters.AddWithValue("@soluongsp", txtSl.Text);
+                            cmd.Parameters.AddWithValue("@gianhapsp", txtGianhap.Text);
+                            cmd.Parameters.AddWithValue("@giabansp", txtGiaban.Text);
+                            cmd.Parameters.AddWithValue("@giamgia", txtGiamGia.Text);
+                            cmd.Parameters.AddWithValue("@loaisp", comboLoai.GetItemText(comboLoai.SelectedItem));
+                            cmd.Parameters.AddWithValue("@donvisp", comboDonvi.GetItemText(comboDonvi.SelectedItem));
+                            cmd.Parameters.AddWithValue("@anhsp", img);
+                            connect.Open();
+                            if (cmd.ExecuteNonQuery() > 0)
+                            {
+                                MessageBox.Show("Đã lựu");
+                                gridviewsp();
+                                txtId.ReadOnly = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lưu không thành công!");
+                                txtId.ReadOnly = true;
+                            }
+                            connect.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        connect.Close();
+                        MessageBox.Show("Error during insert: " + ex.Message);
+                    }
+                }
             }
             else
             {
-                try
-                {
-                    byte[] img = null;
-                    FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
-                    BinaryReader br = new BinaryReader(fs);
-                    img = br.ReadBytes((int)fs.Length);
-                    using (var cmd = new SqlCommand("update tonkho set tensp=@tensp,soluongsp=@soluongsp,gianhapsp=@gianhapsp,giabansp=@giabansp,loaisp=@loaisp,donvisp=@donvisp,anhsp=@anhsp,giamgia=@giamgia where masp=@masp"))
-                    {
-                        cmd.Connection = connect;
-                        cmd.Parameters.AddWithValue("@masp", txtId.Text);
-                        cmd.Parameters.AddWithValue("@tensp", txtTensp.Text);
-                        cmd.Parameters.AddWithValue("@soluongsp", txtSl.Text);
-                        cmd.Parameters.AddWithValue("@gianhapsp", txtGianhap.Text);
-                        cmd.Parameters.AddWithValue("@giabansp", txtGiaban.Text);
-                        cmd.Parameters.AddWithValue("@giamgia", txtGiamGia.Text);
-                        cmd.Parameters.AddWithValue("@loaisp", comboLoai.GetItemText(comboLoai.SelectedItem));
-                        cmd.Parameters.AddWithValue("@donvisp", comboDonvi.GetItemText(comboDonvi.SelectedItem));
-                        cmd.Parameters.AddWithValue("@anhsp", img);
-                        connect.Open();
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Đã lựu");
-                            gridviewsp();
-                            txtId.ReadOnly = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Lưu không thành công!");
-                            txtId.ReadOnly = true;
-                        }
-                        connect.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    connect.Close();
-                    MessageBox.Show("Error during insert: " + ex.Message);
-                }
+                MessageBox.Show("invalid input!");
             }
         }
 

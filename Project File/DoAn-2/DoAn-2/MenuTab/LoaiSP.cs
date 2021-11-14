@@ -148,37 +148,45 @@ namespace DoAn_2.MenuTab
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxID.Text))
+            LoaiSPClass l = new LoaiSPClass();
+            if (l.CheckInputLoai(textBoxID.Text, textBoxTenLoai.Text))
             {
-                MessageBox.Show("Trống mã loại!");
-                textBoxID.Select();
+                if (string.IsNullOrWhiteSpace(textBoxID.Text))
+                {
+                    MessageBox.Show("Trống mã loại!");
+                    textBoxID.Select();
+                }
+                else
+                {
+                    using (var cmd = new SqlCommand("INSERT INTO loaisp (IDloai,TenLoai) VALUES (@IDloai,@TenLoai)"))
+                    {
+                        cmd.Connection = connect;
+                        cmd.Parameters.AddWithValue("@IDloai", textBoxID.Text);
+                        cmd.Parameters.AddWithValue("@TenLoai", textBoxTenLoai.Text);
+
+                        connect.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Đã thêm");
+                            connect.Close();
+                            Clear();
+                            GridViewSPLoai();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm không thành công!");
+                            connect.Close();
+                        }
+                        connect.Close();
+
+                    }
+                }
+                autoIDSPLoai();
             }
             else
             {
-                using (var cmd = new SqlCommand("INSERT INTO loaisp (IDloai,TenLoai) VALUES (@IDloai,@TenLoai)"))
-                {
-                    cmd.Connection = connect;
-                    cmd.Parameters.AddWithValue("@IDloai", textBoxID.Text);
-                    cmd.Parameters.AddWithValue("@TenLoai", textBoxTenLoai.Text);
-
-                    connect.Open();
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Đã thêm");
-                        connect.Close();
-                        Clear();
-                        GridViewSPLoai();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm không thành công!");
-                        connect.Close();
-                    }
-                    connect.Close();
-
-                }
+                MessageBox.Show("ivalid input!");
             }
-            autoIDSPLoai();
         }
 
 
